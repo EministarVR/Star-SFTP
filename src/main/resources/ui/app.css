@@ -201,6 +201,7 @@
     -fx-opacity: 1;
     -fx-effect: none;
 }
+.topbar .image-view { -fx-translate-y: 0.5; }
 
 /* Labels in Dialog-Formularen */
 .dialog-pane .label { -fx-text-fill: -fx-text-weak; -fx-font-size: 12.5px; }

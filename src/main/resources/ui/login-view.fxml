@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import org.kordamp.ikonli.feather.Feather?>
+<?import javafx.scene.image.*?>
 
 <StackPane xmlns="http://javafx.com/javafx/21.0.6"
            xmlns:fx="http://javafx.com/fxml/1"
@@ -15,6 +16,9 @@
 
         <!-- Topbar -->
         <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
+            <ImageView fitWidth="22" fitHeight="22" smooth="true" preserveRatio="true">
+                <image><Image url="@assets/logo.png"/></image>
+            </ImageView>
             <Label text="STAR-SFTP" styleClass="title"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <TextField fx:id="tfSearch" promptText="Suchen… (Name, Host, User)" prefWidth="260"/>

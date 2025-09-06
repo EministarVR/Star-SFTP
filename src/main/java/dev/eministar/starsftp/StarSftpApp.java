@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -19,6 +20,9 @@ public class StarSftpApp extends Application {
         Scene scene = new Scene(root, 1100, 680);
         scene.getStylesheets().add(Objects.requireNonNull(
                 getClass().getResource("/ui/app.css"), "missing /ui/app.css").toExternalForm());
+
+        Image icon = new Image(getClass().getResourceAsStream("/assets/logo.png"));
+        stage.getIcons().add(icon);
         stage.setTitle("STAR-SFTP — Login");
         stage.setMinWidth(960);
         stage.setMinHeight(620);

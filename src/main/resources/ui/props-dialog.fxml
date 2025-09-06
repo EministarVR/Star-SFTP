@@ -2,6 +2,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
 
 <DialogPane xmlns="http://javafx.com/javafx/21.0.6"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -17,7 +19,9 @@
                     <ColumnConstraints halignment="RIGHT" prefWidth="110"/>
                     <ColumnConstraints hgrow="ALWAYS"/>
                 </columnConstraints>
-
+                <ImageView fitWidth="18" fitHeight="18" smooth="true" preserveRatio="true">
+                    <image><Image url="@assets/logo.png"/></image>
+                </ImageView>
                 <Label text="Name"/>
                 <TextField fx:id="tfName" GridPane.columnIndex="1" editable="false"/>
 

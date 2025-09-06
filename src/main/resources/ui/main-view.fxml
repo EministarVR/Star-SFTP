@@ -2,6 +2,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
 
 <BorderPane xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="dev.eministar.starsftp.ui.SftpController"
@@ -9,6 +11,9 @@
 
     <top>
         <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar" BorderPane.alignment="CENTER">
+            <ImageView fitWidth="22" fitHeight="22" smooth="true" preserveRatio="true">
+                <image><Image url="@assets/logo.png"/></image>
+            </ImageView>
             <Label text="STAR-SFTP" styleClass="title"/>
             <Label fx:id="lblConn" styleClass="label"/>
             <Pane HBox.hgrow="ALWAYS"/>

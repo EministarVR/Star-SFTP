@@ -2,6 +2,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21.0.6"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -12,6 +13,9 @@
     <top>
         <VBox>
             <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
+                <ImageView fitWidth="20" fitHeight="20" smooth="true" preserveRatio="true">
+                    <image><Image url="@assets/logo.png"/></image>
+                </ImageView>
                 <Label text="STAR-SFTP" styleClass="title"/>
                 <Label fx:id="lblConn" styleClass="subtitle"/>
                 <Pane HBox.hgrow="ALWAYS"/>
