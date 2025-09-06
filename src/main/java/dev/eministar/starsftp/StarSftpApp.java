@@ -14,20 +14,33 @@ public class StarSftpApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         AppNavigator.init(stage);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(
-                getClass().getResource("/ui/login-view.fxml"), "missing /ui/login-view.fxml"));
 
-        Scene scene = new Scene(root, 1100, 680);
-        scene.getStylesheets().add(Objects.requireNonNull(
-                getClass().getResource("/ui/app.css"), "missing /ui/app.css").toExternalForm());
+        // Splash laden
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
+                getClass().getResource("/ui/splash-view.fxml"), "missing /ui/splash-view.fxml"));
+        Parent root = loader.load();
 
-        Image icon = new Image(getClass().getResourceAsStream("/assets/logo.png"));
-        stage.getIcons().add(icon);
-        stage.setTitle("STAR-SFTP — Login");
+        // Styles
+        String css = Objects.requireNonNull(
+                getClass().getResource("/ui/app.css"), "missing /ui/app.css").toExternalForm();
+        Scene scene = new Scene(root, 980, 620);
+        scene.getStylesheets().add(css);
+
+        // App-Icon (passe Pfad an, falls dein Logo woanders liegt)
+        Image icon = null;
+        var iconUrl = getClass().getResource("/ui/logo.png");
+        if (iconUrl != null) icon = new Image(iconUrl.toExternalForm());
+        if (icon != null) stage.getIcons().add(icon);
+
+        stage.setTitle("STAR-SFTP");
         stage.setMinWidth(960);
         stage.setMinHeight(620);
         stage.setScene(scene);
         stage.show();
+
+        // Splash-Animation starten → ruft am Ende AppNavigator.showLogin()
+        dev.eministar.starsftp.ui.SplashController c = loader.getController();
+        c.play();
     }
 
     public static void main(String[] args) { launch(args); }

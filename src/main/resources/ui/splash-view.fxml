@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21.0.6"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="dev.eministar.starsftp.ui.SplashController"
+           styleClass="splash-root">
+
+
+    <Pane styleClass="splash-bg"/>
+
+
+    <VBox spacing="14" alignment="CENTER" styleClass="splash-card">
+        <ImageView fx:id="imgLogo"
+                   fitWidth="220" preserveRatio="true"
+                   pickOnBounds="true">
+
+            <image>
+                <Image url="@assets/logo.png"/>
+            </image>
+        </ImageView>
+
+        <Label text="STAR-SFTP" styleClass="splash-title"/>
+        <Label text="Secure • Smooth • Fast" styleClass="splash-sub"/>
+
+        <ProgressBar fx:id="bar" prefWidth="240" progress="0.0" styleClass="splash-progress"/>
+    </VBox>
+</StackPane>

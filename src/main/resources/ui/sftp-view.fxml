@@ -20,7 +20,7 @@
                 <Label fx:id="lblConn" styleClass="subtitle"/>
                 <Pane HBox.hgrow="ALWAYS"/>
                 <Button fx:id="btnNewConn" text="Neue Verbindung" onAction="#onNewConnection"/>
-                <Button fx:id="btnShortcuts" text="⌨︎ Shortcuts" onAction="#onOpenShortcutDialog"/>
+                <Button fx:id="btnShortcuts" text="Shortcuts" onAction="#onOpenShortcutDialog"/>
                 <Button fx:id="btnLogout" text="Logout" styleClass="button, danger" onAction="#onLogout"/>
             </HBox>
 
