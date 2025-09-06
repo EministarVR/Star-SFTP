@@ -1,67 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.kordamp.ikonli.feather.Feather?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21.0.6"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="dev.eministar.starsftp.ui.LoginController"
-            prefWidth="960" prefHeight="640" styleClass="root">
+<StackPane xmlns="http://javafx.com/javafx/21.0.6"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="dev.eministar.starsftp.ui.LoginController"
+           styleClass="root">
 
-    <top>
+    <!-- App -->
+    <VBox>
+
+        <!-- Topbar -->
         <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
             <Label text="STAR-SFTP" styleClass="title"/>
             <Pane HBox.hgrow="ALWAYS"/>
-            <ProgressIndicator fx:id="pi" visible="false" prefWidth="22" prefHeight="22"/>
+            <TextField fx:id="tfSearch" promptText="Suchen… (Name, Host, User)" prefWidth="260"/>
+            <Button fx:id="btnNew" text="Neu">
+                <graphic>
+                    <FontIcon>
+                        <iconCode><Feather fx:constant="PLUS"/></iconCode>
+                    </FontIcon>
+                </graphic>
+            </Button>
+            <padding><Insets topRightBottomLeft="10"/></padding>
         </HBox>
-    </top>
 
-    <center>
-        <VBox spacing="12" alignment="TOP_CENTER">
-            <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+        <!-- Content -->
+        <BorderPane>
 
-            <HBox spacing="8" alignment="CENTER_LEFT">
-                <Label text="Profil:"/>
-                <ComboBox fx:id="cbProfiles" prefWidth="240"/>
-                <Button fx:id="btnDelete" text="Löschen" onAction="#onDelete"/>
-
-            </HBox>
-
-            <GridPane hgap="10" vgap="10">
-                <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="160"/>
-                    <ColumnConstraints hgrow="ALWAYS"/>
-                </columnConstraints>
-
-                <Label text="Name"/>
-                <TextField fx:id="tfName" GridPane.columnIndex="1"/>
-
-                <Label text="Host" GridPane.rowIndex="1"/>
-                <TextField fx:id="tfHost" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-
-                <Label text="Port" GridPane.rowIndex="2"/>
-                <TextField fx:id="tfPort" text="22" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-
-                <Label text="Benutzer" GridPane.rowIndex="3"/>
-                <TextField fx:id="tfUser" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-
-                <Label text="Passwort" GridPane.rowIndex="4"/>
-                <PasswordField fx:id="pfPass" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-
-                <Label text="Private Key" GridPane.rowIndex="5"/>
-                <HBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <TextField fx:id="tfKey" HBox.hgrow="ALWAYS"/>
-                    <Button fx:id="btnPickKey" text="…"
-                            onAction="#onPickKey"/>
+            <!-- Quick Connect -->
+            <top>
+                <HBox spacing="10" BorderPane.alignment="CENTER">
+                    <TextField fx:id="qcHost" promptText="host oder host:port" prefWidth="220"/>
+                    <TextField fx:id="qcUser" promptText="user"/>
+                    <PasswordField fx:id="qcPass" promptText="passwort"/>
+                    <Button fx:id="btnQuickConnect" text="Quick Connect" defaultButton="true">
+                        <graphic>
+                            <FontIcon>
+                                <iconCode><Feather fx:constant="CORNER_DOWN_RIGHT"/></iconCode>
+                            </FontIcon>
+                        </graphic>
+                    </Button>
+                    <padding><Insets topRightBottomLeft="10"/></padding>
                 </HBox>
+            </top>
 
-                <CheckBox fx:id="chkRemember" text="Geheimnisse merken (verschlüsselt)" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <!-- Hosts Grid -->
+            <center>
+                <ScrollPane fitToWidth="true" styleClass="transparent-scroll">
+                    <content>
+                        <TilePane fx:id="tile" hgap="14" vgap="14"
+                                  prefTileWidth="240" prefTileHeight="140">
+                            <!-- Karten werden dynamisch befüllt -->
+                            <padding><Insets topRightBottomLeft="14"/></padding>
+                        </TilePane>
+                    </content>
+                    <padding><Insets topRightBottomLeft="14"/></padding>
+                </ScrollPane>
+            </center>
 
-                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                    <Button fx:id="btnSave" text="Speichern" onAction="#onSave"/>
-                    <Button fx:id="btnConnect" text="Verbinden" onAction="#onConnect" defaultButton="true"/>
-                </HBox>
-            </GridPane>
+        </BorderPane>
+    </VBox>
+
+    <!-- Connecting Overlay -->
+    <StackPane fx:id="overlay" visible="false" opacity="0" styleClass="overlay">
+        <VBox spacing="12" alignment="CENTER" styleClass="overlay-card">
+            <ProgressIndicator fx:id="pi" prefWidth="64" prefHeight="64"/>
+            <Label fx:id="lblConnecting" text="Verbinde…" styleClass="overlay-title"/>
+            <Label fx:id="lblConnectingSub" text="" styleClass="overlay-sub"/>
+            <Button fx:id="btnCancelConnect" text="Abbrechen" styleClass="secondary"/>
+            <padding><Insets topRightBottomLeft="16"/></padding>
         </VBox>
-    </center>
-</BorderPane>
+    </StackPane>
+
+</StackPane>
