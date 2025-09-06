@@ -1,7 +1,7 @@
 # Star-SFTP ✨
 
 <p align="center">
-  <img src="assets/logo.svg" alt="Star SFTP Logo" width="200" />
+  <img src="assets/logo.png" alt="Star SFTP Logo" width="200" />
 </p>
 
 <p align="center">
