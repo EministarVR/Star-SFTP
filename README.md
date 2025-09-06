@@ -1,7 +1,7 @@
 # Star-SFTP ✨
 
 <p align="center">
-  <img src="assets/logo.png" alt="Star SFTP Logo" width="200" />
+  <img src="https://github.com/EministarVR/Star-SFTP/blob/main/src/main/resources/assets/logo.png" alt="Star SFTP Logo" width="200" />
 </p>
 
 <p align="center">
