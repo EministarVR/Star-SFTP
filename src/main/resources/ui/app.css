@@ -1,0 +1,242 @@
+/* ===== STAR-SFTP THEME ===== */
+.root {
+    -fx-font-family: "Segoe UI", "Inter", "SF Pro", "Roboto", sans-serif;
+    /* Design Tokens */
+    -fx-accent: #7c5cff;          /* Brand Accent */
+    -fx-accent-weak: #e9e6ff;
+    -fx-bg: #0e0f13;              /* App Hintergrund (Dark) */
+    -fx-bg-elev: #171923;         /* Karten */
+    -fx-bg-elev-2: #1f2330;
+    -fx-text: #e7e9ee;
+    -fx-text-weak: #a8b0c2;
+    -fx-border: rgba(255,255,255,0.08);
+    -fx-focus: #a38bff;
+    -fx-danger: #ff5a5f;
+
+    -fx-base: -fx-bg;             /* JavaFX Base Hook */
+    -fx-control-inner-background: derive(-fx-bg-elev, 8%);
+    -fx-text-background-color: -fx-text;
+    -fx-background-color: -fx-bg;
+}
+
+/* Topbar */
+.topbar {
+    -fx-padding: 12 16;
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    -fx-border-color: -fx-border transparent -fx-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 18, 0.3, 0, 6);
+}
+.title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-text;
+    -fx-letter-spacing: 0.3px;
+}
+
+/* Card / Panel */
+.card {
+    -fx-background-color: -fx-bg-elev;
+    -fx-padding: 14;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 24, 0.25, 0, 10);
+}
+.card-title {
+    -fx-text-fill: -fx-text;
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-padding: 6 0 10 0;
+}
+
+/* Labels rechts in Grid */
+.label {
+    -fx-text-fill: -fx-text-weak;
+    -fx-font-size: 12.5px;
+}
+
+/* Inputs */
+.text-field, .password-field, .combo-box-base {
+    -fx-background-color: -fx-bg-elev-2;
+    -fx-text-fill: -fx-text;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8 10;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+}
+.text-field:focused, .password-field:focused, .combo-box-base:focused {
+    -fx-border-color: -fx-focus;
+    -fx-effect: dropshadow(gaussian, rgba(163,139,255,0.35), 12, 0.3, 0, 0);
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-weight: 600;
+    -fx-padding: 8 14;
+    -fx-border-color: transparent;
+}
+.button:hover { -fx-background-color: derive(-fx-accent, -8%); }
+.button:pressed { -fx-background-color: derive(-fx-accent, -16%); }
+.button:default { -fx-background-color: linear-gradient(to bottom, -fx-accent, derive(-fx-accent, -10%)); }
+
+.button:cancel, .button.danger {
+    -fx-background-color: -fx-danger;
+}
+.button.secondary {
+    -fx-background-color: -fx-accent-weak;
+    -fx-text-fill: -fx-accent;
+}
+
+/* CheckBox */
+.check-box .box {
+    -fx-background-color: -fx-bg-elev-2;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: -fx-border;
+}
+.check-box:selected .mark { -fx-background-color: -fx-accent; }
+
+/* Table */
+.table {
+    -fx-background-color: transparent;
+}
+.table-view {
+    -fx-background-color: -fx-bg-elev;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-padding: 6;
+}
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    -fx-background-radius: 12 12 0 0;
+    -fx-padding: 8 6;
+}
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text;
+    -fx-font-weight: 600;
+}
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+.table-row-cell:odd {
+    -fx-background-color: rgba(255,255,255,0.02);
+}
+.table-row-cell:selected {
+    -fx-background-color: rgba(124,92,255,0.35);
+}
+.table-cell {
+    -fx-text-fill: -fx-text;
+    -fx-padding: 8 10;
+}
+
+/* ==== Dialogs (Props) – gleiche Ästhetik wie App ==== */
+.dialog-pane {
+    -fx-background-color: -fx-bg-elev;
+    -fx-background-insets: 0;
+    -fx-background-radius: 16;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 16;
+    -fx-padding: 0; /* wir stylen header/content/buttonbar separat */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 24, 0.25, 0, 10);
+}
+.dialog-pane > .header-panel {
+    -fx-background-color: linear-gradient(to bottom,
+    rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    -fx-background-radius: 16 16 0 0;
+    -fx-border-color: transparent transparent -fx-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 14;
+}
+.dialog-pane > .header-panel .label {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+}
+.dialog-pane > .content {
+    -fx-padding: 16 18 4 18;
+    -fx-background-color: transparent;
+}
+.dialog-pane > .button-bar {
+    -fx-background-color: transparent;
+    -fx-padding: 12 16 16 16;
+}
+
+/* Inputs im Dialog wie in der App */
+.dialog-pane .text-field,
+.dialog-pane .password-field,
+.dialog-pane .combo-box-base {
+    -fx-background-color: -fx-bg-elev-2;
+    -fx-text-fill: -fx-text;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8 10;
+    -fx-border-color: transparent;
+}
+.dialog-pane .text-field:focused,
+.dialog-pane .password-field:focused,
+.dialog-pane .combo-box-base:focused {
+    -fx-border-color: -fx-focus;
+    -fx-effect: dropshadow(gaussian, rgba(163,139,255,0.35), 12, 0.3, 0, 0);
+}
+
+.dialog-pane .label {
+    -fx-text-fill: -fx-text-weak;
+    -fx-font-size: 12.5px;
+}
+
+/* Gruppentitel im Grid */
+.props-section {
+    -fx-text-fill: -fx-text-weak;
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-opacity: 0.9;
+    -fx-padding: 8 0 4 0;
+}
+
+/* Checkboxes schön kompakt */
+.props-box .check-box .box {
+    -fx-background-color: -fx-bg-elev-2;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: -fx-border;
+}
+.props-box .check-box:selected .mark {
+    -fx-background-color: -fx-accent;
+}
+
+/* Buttons im Dialog */
+.dialog-pane .button {
+    -fx-background-radius: 10;
+    -fx-font-weight: 600;
+    -fx-padding: 8 14;
+}
+.dialog-pane .button.primary {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+}
+.dialog-pane .button.primary:hover { -fx-background-color: derive(-fx-accent, -8%); }
+.dialog-pane .button.primary:pressed { -fx-background-color: derive(-fx-accent, -16%); }
+
+.dialog-pane .button.danger {
+    -fx-background-color: -fx-danger;
+    -fx-text-fill: white;
+}
+.dialog-pane .button.danger:hover { -fx-background-color: derive(-fx-danger, -8%); }
+.dialog-pane .button.danger:pressed { -fx-background-color: derive(-fx-danger, -16%); }
+
+/* kleine Chips-Labels (z.B. Größe/Typ unten) */
+.props-meta {
+    -fx-text-fill: -fx-text-weak;
+    -fx-font-size: 11.5px;
+}
+
+
+.spacing-10 { -fx-padding: 10; }

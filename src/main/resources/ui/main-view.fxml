@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dev.eministar.starsftp.ui.SftpController"
+            prefWidth="1180" prefHeight="720" styleClass="root">
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar" BorderPane.alignment="CENTER">
+            <Label text="STAR-SFTP" styleClass="title"/>
+            <Label fx:id="lblConn" styleClass="label"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnUpload" text="Upload" onAction="#onUpload"/>
+            <Button fx:id="btnDownload" text="Download" onAction="#onDownload" styleClass="button, secondary"/>
+            <Button fx:id="btnLogout" text="Abmelden" onAction="#onLogout" styleClass="button, danger"/>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.5">
+            <items>
+                <VBox spacing="6">
+                    <Label text="Lokal" styleClass="card-title"/>
+                    <TableView fx:id="tblLocal" VBox.vgrow="ALWAYS" styleClass="table"/>
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="Remote" styleClass="card-title"/>
+                    <TableView fx:id="tblRemote" VBox.vgrow="ALWAYS" styleClass="table"/>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

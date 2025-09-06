@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dev.eministar.starsftp.ui.SftpController"
+            prefWidth="1180" prefHeight="720"
+            styleClass="root">
+
+    <top>
+        <VBox>
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
+                <Label text="STAR-SFTP" styleClass="title"/>
+                <Label fx:id="lblConn" styleClass="subtitle"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnNewConn" text="Neue Verbindung" onAction="#onNewConnection"/>
+                <Button fx:id="btnShortcuts" text="⌨︎ Shortcuts" onAction="#onOpenShortcutDialog"/>
+                <Button fx:id="btnLogout" text="Logout" styleClass="button, danger" onAction="#onLogout"/>
+            </HBox>
+
+            <VBox>
+                <padding><Insets top="6" left="10" right="10" bottom="8"/></padding>
+
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Pfad:"/>
+                    <TextField fx:id="tfRemotePath" HBox.hgrow="ALWAYS" promptText="/abs/olut/er/pfad oder ~"/>
+                    <Button fx:id="btnGo" text="Gehe" onAction="#onGo"/>
+                    <Button fx:id="btnUp" text="↑" onAction="#onUp"/>
+                    <Button fx:id="btnRoot" text="/" onAction="#onRoot"/>
+                    <Button fx:id="btnHome" text="~" onAction="#onHome"/>
+                    <Button fx:id="btnRefresh" text="⟳" onAction="#onRefresh"/>
+                    <ProgressIndicator fx:id="pi" visible="false" prefWidth="22" prefHeight="22"/>
+                </HBox>
+
+                <HBox fx:id="bcBar" spacing="6" alignment="CENTER_LEFT"/>
+            </VBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="12">
+            <padding><Insets top="10" left="10" right="10" bottom="10"/></padding>
+
+            <VBox spacing="6" VBox.vgrow="ALWAYS">
+                <Label text="Remote Dateien" styleClass="card-title"/>
+                <TableView fx:id="tblRemote" VBox.vgrow="ALWAYS" styleClass="table"/>
+                <HBox spacing="8" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnMkdir" text="Neuer Ordner" onAction="#onMkdir"/>
+                    <Button fx:id="btnRename" text="Umbenennen" onAction="#onRename"/>
+                    <Button fx:id="btnDelete" text="Löschen" styleClass="button, danger" onAction="#onDelete"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="6" VBox.vgrow="ALWAYS">
+                <Label text="Aktionen" styleClass="card-title"/>
+                <HBox spacing="8">
+                    <Button fx:id="btnUpload" text="Upload" onAction="#onUpload"/>
+                    <Button fx:id="btnDownload" text="Download" styleClass="button, secondary" onAction="#onDownload"/>
+                </HBox>
+                <!-- & muss escaped werden -->
+                <Label text="(Drag &amp; Drop aus Explorer in die Liste → Upload. Per Drag auf Ordner → Move)"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

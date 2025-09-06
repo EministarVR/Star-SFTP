@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx/21.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dev.eministar.starsftp.ui.PropsController"
+            headerText="Eigenschaften">
+
+    <content>
+        <!-- Karte wie im Rest der App -->
+        <VBox spacing="12" styleClass="card">
+            <!-- Formular -->
+            <GridPane hgap="10" vgap="8" styleClass="props-box">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" prefWidth="110"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="Name"/>
+                <TextField fx:id="tfName" GridPane.columnIndex="1" editable="false"/>
+
+                <Label text="Pfad" GridPane.rowIndex="1"/>
+                <TextField fx:id="tfPath" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false"/>
+
+                <Label text="Owner" GridPane.rowIndex="2"/>
+                <TextField fx:id="tfOwner" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="UID oder Name"/>
+
+                <Label text="Group" GridPane.rowIndex="3"/>
+                <TextField fx:id="tfGroup" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="GID oder Name"/>
+
+                <!-- Abschnitt: Rechte -->
+                <Label text="Rechte" styleClass="props-section" GridPane.rowIndex="4"/>
+                <HBox spacing="16" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <VBox spacing="4">
+                        <Label text="Eigentümer"/>
+                        <HBox spacing="8">
+                            <CheckBox fx:id="ownR" text="R"/>
+                            <CheckBox fx:id="ownW" text="W"/>
+                            <CheckBox fx:id="ownX" text="X"/>
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Gruppe"/>
+                        <HBox spacing="8">
+                            <CheckBox fx:id="grpR" text="R"/>
+                            <CheckBox fx:id="grpW" text="W"/>
+                            <CheckBox fx:id="grpX" text="X"/>
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Andere"/>
+                        <HBox spacing="8">
+                            <CheckBox fx:id="othR" text="R"/>
+                            <CheckBox fx:id="othW" text="W"/>
+                            <CheckBox fx:id="othX" text="X"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                <!-- Abschnitt: Flags -->
+                <Label text="Flags" styleClass="props-section" GridPane.rowIndex="5"/>
+                <HBox spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <CheckBox fx:id="setUid" text="setuid"/>
+                    <CheckBox fx:id="setGid" text="setgid"/>
+                    <CheckBox fx:id="sticky" text="sticky"/>
+                </HBox>
+
+                <Label text="Oktal" GridPane.rowIndex="6"/>
+                <TextField fx:id="tfOctal" GridPane.columnIndex="1" GridPane.rowIndex="6" promptText="z.B. 0755"/>
+            </GridPane>
+
+            <!-- Meta-Zeile unten -->
+            <Label fx:id="lblInfo" styleClass="props-meta"/>
+        </VBox>
+    </content>
+
+    <buttonTypes>
+        <ButtonType text="Abbrechen" buttonData="CANCEL_CLOSE"/>
+        <ButtonType text="Speichern" buttonData="OK_DONE"/>
+    </buttonTypes>
+</DialogPane>

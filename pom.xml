@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.eministar</groupId>
+    <artifactId>star-sftp</artifactId>
+    <version>1.0.0</version>
+    <name>star-sftp</name>
+
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javafx.version>21.0.6</javafx.version>
+        <junit.version>5.12.1</junit.version>
+    </properties>
+
+    <dependencies>
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId><artifactId>javafx-controls</artifactId><version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId><artifactId>javafx-fxml</artifactId><version>${javafx.version}</version>
+        </dependency>
+
+
+        <!-- UI -->
+        <dependency>
+            <groupId>org.controlsfx</groupId><artifactId>controlsfx</artifactId><version>11.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId><artifactId>ikonli-core</artifactId><version>12.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId><artifactId>ikonli-javafx</artifactId><version>12.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId><artifactId>ikonli-feather-pack</artifactId><version>12.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.synedra</groupId><artifactId>validatorfx</artifactId><version>0.6.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId><artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Optional: BootstrapFX (wenn du willst) -->
+        <dependency>
+            <groupId>org.kordamp.bootstrapfx</groupId><artifactId>bootstrapfx-core</artifactId><version>0.4.0</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- SFTP -->
+        <dependency>
+            <groupId>com.hierynomus</groupId><artifactId>sshj</artifactId><version>0.38.0</version>
+        </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId><artifactId>jackson-databind</artifactId><version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId><artifactId>jackson-core</artifactId><version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId><artifactId>jackson-annotations</artifactId><version>2.17.1</version>
+        </dependency>
+
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>${junit.version}</version><scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-engine</artifactId><version>${junit.version}</version><scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Compiler nutzt 'release' -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>${maven.compiler.release}</release>
+                </configuration>
+            </plugin>
+
+            <!-- JavaFX Run -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <!-- FQCN, ohne Modulprefix -->
+                    <mainClass>dev.eministar.starsftp.Launcher</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
